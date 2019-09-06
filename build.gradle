@@ -6,7 +6,7 @@ plugins {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-def ROBOT_MAIN_CLASS = "com.team2502.Main"
+def ROBOT_MAIN_CLASS = "com.team2502.offseason2019.Main"
 
 // Define my targets (RoboRIO) and artifacts (deployable files)
 // This is added by GradleRIO's backing project EmbeddedTools.
@@ -17,7 +17,7 @@ deploy {
             // or from command line. If not found an exception will be thrown.
             // You can use getTeamOrDefault(team) instead of getTeamNumber if you
             // want to store a team number in this file.
-            team = 2502
+            team = frc.getTeamOrDefault(2502)
         }
     }
     artifacts {
@@ -43,6 +43,8 @@ def includeDesktopSupport = false
 // Maven central needed for JUnit
 repositories {
     mavenCentral()
+    maven { url 'http://devsite.ctr-electronics.com/maven/release/' }
+    maven {url 'http://www.revrobotics.com/content/sw/max/sdk/maven/'}
 }
 
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
@@ -50,8 +52,14 @@ repositories {
 dependencies {
     compile wpi.deps.wpilib()
     compile wpi.deps.vendor.java()
+
+    compile 'com.ctre.phoenix:api-java:5.12.0'
+    compile 'com.ctre.phoenix:wpiapi-java:5.12.0'
+    compile 'com.revrobotics.frc:SparkMax-java:1.4.0'
+
     nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+
     testCompile 'junit:junit:4.12'
 }
 

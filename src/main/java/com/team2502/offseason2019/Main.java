@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package com.team2502;
+package com.team2502.offseason2019;
 
 import edu.wpi.first.wpilibj.RobotBase;
 
