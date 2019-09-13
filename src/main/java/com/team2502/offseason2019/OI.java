@@ -26,6 +26,9 @@ public class OI {
 
     public static final Button INTAKE_DEPLOY = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.INTAKE_DEPLOY);
 
+    static final Button ELEV_UP = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.RAISE_ELEVATOR);
+    static final Button ELEV_DOWN = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.LOWER_ELEVATOR);
+
     static
     {
         // INTAKE
