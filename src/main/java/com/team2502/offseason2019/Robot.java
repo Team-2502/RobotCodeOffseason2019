@@ -7,6 +7,7 @@
 
 package com.team2502.offseason2019;
 
+import com.team2502.offseason2019.subsystem.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
@@ -22,9 +23,13 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
+
+  public static ElevatorSubsystem ELEVATOR;
+
   @Override
   public void robotInit() {
 
+    ELEVATOR = new ElevatorSubsystem();
   }
 
   /**

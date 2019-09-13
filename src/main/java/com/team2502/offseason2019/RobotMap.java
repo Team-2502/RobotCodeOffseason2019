@@ -17,12 +17,20 @@ public class RobotMap {
 
     public static final class Button
     {
+        public static final int RAISE_ELEVATOR = 3;
+        public static final int LOWER_ELEVATOR = 4;
+
         private Button() { }
     }
 
     public static final class Motor
     {
-        private Motor() { }
+        public static final int ELEVATOR_TOP = 8;
+        public static final int ELEVATOR_BOTTOM = 9;
+
+        private Motor() {
+
+        }
     }
 
     public class Solenoid
