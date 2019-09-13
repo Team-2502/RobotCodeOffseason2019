@@ -24,6 +24,8 @@ public class RobotMap {
         public static final int HATCH_INTAKE_OUT = 6;
 
         public static final int INTAKE_DEPLOY = 1;
+        public static final int RAISE_ELEVATOR = 3;
+        public static final int LOWER_ELEVATOR = 4;
 
         private Button() { }
     }
@@ -32,6 +34,14 @@ public class RobotMap {
     {
         public static final int INTAKE_CARGO = 5;
         public static final int INTAKE_HATCH = 6;
+
+        public static final int ELEVATOR_TOP = 8;
+        public static final int ELEVATOR_BOTTOM = 9;
+
+        public static final int DRIVE_FRONT_RIGHT = 0;
+        public static final int DRIVE_FRONT_LEFT = 1;
+        public static final int DRIVE_BACK_RIGHT = 2;
+        public static final int DRIVE_BACK_LEFT = 3;
 
         private Motor() { }
     }

@@ -7,8 +7,10 @@
 
 package com.team2502.offseason2019;
 
+
 import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
 import com.team2502.offseason2019.subsystem.solenoid.IntakeDeploySolenoid;
+import com.team2502.offseason2019.subsystem.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
@@ -22,8 +24,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class Robot extends TimedRobot {
 
   public static ActiveIntakeSubsystem ACTIVE_INTAKE;
-
   public static IntakeDeploySolenoid INTAKE_DEPLOY;
+  public static ElevatorSubsystem ELEVATOR;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -32,9 +34,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit()
   {
-      ACTIVE_INTAKE = new ActiveIntakeSubsystem();
+    ACTIVE_INTAKE = new ActiveIntakeSubsystem();
+    INTAKE_DEPLOY = new IntakeDeploySolenoid();
+    ELEVATOR = new ElevatorSubsystem();
 
-      INTAKE_DEPLOY = new IntakeDeploySolenoid();
   }
 
   /**
