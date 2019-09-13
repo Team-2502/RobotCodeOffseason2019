@@ -17,6 +17,13 @@ public class RobotMap {
 
     public static final class Button
     {
+        //TODO finalize button ids
+        public static final int CARGO_INTAKE_IN = 3;
+        public static final int CARGO_INTAKE_OUT = 5;
+        public static final int HATCH_INTAKE_IN = 4;
+        public static final int HATCH_INTAKE_OUT = 6;
+
+        public static final int INTAKE_DEPLOY = 1;
         public static final int RAISE_ELEVATOR = 3;
         public static final int LOWER_ELEVATOR = 4;
 
@@ -25,6 +32,9 @@ public class RobotMap {
 
     public static final class Motor
     {
+        public static final int INTAKE_CARGO = 5;
+        public static final int INTAKE_HATCH = 6;
+
         public static final int ELEVATOR_TOP = 8;
         public static final int ELEVATOR_BOTTOM = 9;
 
@@ -38,6 +48,8 @@ public class RobotMap {
 
     public class Solenoid
     {
+        public static final int INTAKE_DEPLOY = 1;
+
         private Solenoid() { }
     }
 

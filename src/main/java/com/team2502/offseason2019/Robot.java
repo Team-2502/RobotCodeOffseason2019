@@ -7,6 +7,9 @@
 
 package com.team2502.offseason2019;
 
+
+import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
+import com.team2502.offseason2019.subsystem.solenoid.IntakeDeploySolenoid;
 import com.team2502.offseason2019.subsystem.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -19,17 +22,22 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * project.
  */
 public class Robot extends TimedRobot {
+
+  public static ActiveIntakeSubsystem ACTIVE_INTAKE;
+  public static IntakeDeploySolenoid INTAKE_DEPLOY;
+  public static ElevatorSubsystem ELEVATOR;
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
-
-  public static ElevatorSubsystem ELEVATOR;
-
   @Override
-  public void robotInit() {
-
+  public void robotInit()
+  {
+    ACTIVE_INTAKE = new ActiveIntakeSubsystem();
+    INTAKE_DEPLOY = new IntakeDeploySolenoid();
     ELEVATOR = new ElevatorSubsystem();
+
   }
 
   /**
@@ -72,5 +80,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+  }
+
+  public void disabledInit() {
+    INTAKE_DEPLOY.setEnabled(false);
   }
 }
