@@ -9,6 +9,7 @@ package com.team2502.offseason2019;
 
 
 import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
+import com.team2502.offseason2019.subsystem.DrivetrainSubsystem;
 import com.team2502.offseason2019.subsystem.solenoid.IntakeDeploySolenoid;
 import com.team2502.offseason2019.subsystem.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -23,6 +24,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  */
 public class Robot extends TimedRobot {
 
+  public static DrivetrainSubsystem DRIVETRAIN;
   public static ActiveIntakeSubsystem ACTIVE_INTAKE;
   public static IntakeDeploySolenoid INTAKE_DEPLOY;
   public static ElevatorSubsystem ELEVATOR;
@@ -34,10 +36,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit()
   {
+    DRIVETRAIN = new DrivetrainSubsystem();
     ACTIVE_INTAKE = new ActiveIntakeSubsystem();
     INTAKE_DEPLOY = new IntakeDeploySolenoid();
     ELEVATOR = new ElevatorSubsystem();
-
   }
 
   /**
