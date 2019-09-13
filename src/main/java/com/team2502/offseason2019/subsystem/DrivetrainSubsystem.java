@@ -2,6 +2,7 @@ package com.team2502.offseason2019.subsystem;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.team2502.offseason2019.OI;
 import com.team2502.offseason2019.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -12,6 +13,13 @@ public class DrivetrainSubsystem extends Subsystem {
 
     private final WPI_TalonSRX frontRight;
     private final WPI_TalonSRX frontLeft;
+
+    public enum TeleopMode {
+        VELOCITY,
+        VOLTAGE
+    }
+
+    private TeleopMode teleopMode = TeleopMode.VELOCITY;
 
     public DrivetrainSubsystem() {
         frontRight = new WPI_TalonSRX(RobotMap.Motor.DRIVE_FRONT_RIGHT);
@@ -30,6 +38,22 @@ public class DrivetrainSubsystem extends Subsystem {
 //        Uncomment these two lines of code to invert the left wheels
 //        frontLeft.setInverted(true);
 //        backLeft.setInverted(true);
+    }
+
+    public void runTeleop() {
+        double left = OI.JOYSTICK_DRIVE_LEFT.getY();
+        double right = OI.JOYSTICK_DRIVE_RIGHT.getY();
+
+        switch(teleopMode) {
+            case VELOCITY: {
+                runVelocity(left, right);
+                break;
+            }
+            case VOLTAGE: {
+                runVoltage(left, right);
+                break;
+            }
+        }
     }
 
     /**
@@ -62,6 +86,14 @@ public class DrivetrainSubsystem extends Subsystem {
      */
     public void stopWheels() {
         runVoltage(0, 0);
+    }
+
+    public TeleopMode getTeleopMode() {
+        return teleopMode;
+    }
+
+    public void setTeleopMode(TeleopMode teleopMode) {
+        this.teleopMode = teleopMode;
     }
 
     @Override
