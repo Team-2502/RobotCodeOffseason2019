@@ -33,20 +33,33 @@ public class DrivetrainSubsystem extends Subsystem {
     }
 
     /**
-     *
      * @param left
+     * Velocity for the left side of the drive train
+     *
      * @param right
+     * Velocity for the right side of the drive train
      */
     public void runVelocity(double left, double right) {
         frontLeft.set(ControlMode.Velocity, left);
         frontRight.set(ControlMode.Velocity, right);
     }
 
+    /**
+     * @param left
+     * Voltage for the left side of the drive train
+     *
+     * @param right
+     * Voltage for the right side of the drive train
+     */
     public void runVoltage(double left, double right) {
         frontLeft.set(ControlMode.PercentOutput, left);
         frontRight.set(ControlMode.PercentOutput, right);
     }
 
+    /**
+     * Stops the robot by setting the voltage for both sides to 0
+     * @see DrivetrainSubsystem#runVoltage(double, double)
+     */
     public void stopWheels() {
         runVoltage(0, 0);
     }
