@@ -8,6 +8,7 @@ package com.team2502.offseason2019.subsystem;
  */
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.team2502.offseason2019.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -27,6 +28,8 @@ public class ActiveIntakeSubsystem extends Subsystem
     {
         cargoIntake = new WPI_TalonSRX(RobotMap.Motor.INTAKE_CARGO);
         hatchIntake = new WPI_TalonSRX(RobotMap.Motor.INTAKE_HATCH);
+
+        cargoIntake.setNeutralMode(NeutralMode.Brake);
     }
 
     /**
