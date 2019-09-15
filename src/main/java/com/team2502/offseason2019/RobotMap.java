@@ -7,8 +7,8 @@ public class RobotMap {
 
     public static final class Joystick {
 
-        public static final int JOYSTICK_DRIVE_LEFT = 1;
         public static final int JOYSTICK_DRIVE_RIGHT = 0;
+        public static final int JOYSTICK_DRIVE_LEFT = 1;
         public static final int JOYSTICK_FUNCTION = 2;
         public static final int JOYSTICK_SIDE_PANEL = 3;
 
@@ -17,15 +17,16 @@ public class RobotMap {
 
     public static final class Button
     {
-        //TODO finalize button ids
-        public static final int CARGO_INTAKE_IN = 3;
-        public static final int CARGO_INTAKE_OUT = 5;
-        public static final int HATCH_INTAKE_IN = 4;
-        public static final int HATCH_INTAKE_OUT = 6;
+        public static final int CARGO_INTAKE_IN = 6;
+        public static final int CARGO_INTAKE_OUT = 4;
+
+        public static final int HATCH_INTAKE_IN = 5;
+        public static final int HATCH_INTAKE_OUT = 3;
 
         public static final int INTAKE_DEPLOY = 1;
-        public static final int RAISE_ELEVATOR = 3;
-        public static final int LOWER_ELEVATOR = 4;
+
+        public static final int RAISE_ELEVATOR = 12;
+        public static final int LOWER_ELEVATOR = 11;
 
         private Button() { }
     }
