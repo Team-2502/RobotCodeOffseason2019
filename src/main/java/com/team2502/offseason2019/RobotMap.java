@@ -33,16 +33,17 @@ public class RobotMap {
 
     public static final class Motor
     {
-        public static final int INTAKE_CARGO = 5;
-        public static final int INTAKE_HATCH = 6;
+        // TODO All motors are correct except for intake motors
+        public static final int INTAKE_CARGO = 3;
+        public static final int INTAKE_HATCH = 4;
 
-        public static final int ELEVATOR_TOP = 8;
-        public static final int ELEVATOR_BOTTOM = 9;
+        public static final int ELEVATOR_BOTTOM = 0;
+        public static final int ELEVATOR_TOP = 1;
 
-        public static final int DRIVE_FRONT_RIGHT = 0;
-        public static final int DRIVE_FRONT_LEFT = 1;
+        public static final int DRIVE_FRONT_RIGHT = 1;
+        public static final int DRIVE_FRONT_LEFT = 6;
         public static final int DRIVE_BACK_RIGHT = 2;
-        public static final int DRIVE_BACK_LEFT = 3;
+        public static final int DRIVE_BACK_LEFT = 5;
 
         private Motor() { }
     }
