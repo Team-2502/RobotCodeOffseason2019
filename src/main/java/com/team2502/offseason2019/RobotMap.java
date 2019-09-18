@@ -33,9 +33,8 @@ public class RobotMap {
 
     public static final class Motor
     {
-        // TODO All motors are correct except for intake motors
-        public static final int INTAKE_CARGO = 3;
-        public static final int INTAKE_HATCH = 4;
+        public static final int INTAKE_CARGO = 9;
+        public static final int INTAKE_HATCH = 10;
 
         public static final int ELEVATOR_BOTTOM = 0;
         public static final int ELEVATOR_TOP = 1;
