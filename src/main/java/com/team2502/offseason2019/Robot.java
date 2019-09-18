@@ -12,6 +12,8 @@ import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
 import com.team2502.offseason2019.subsystem.DrivetrainSubsystem;
 import com.team2502.offseason2019.subsystem.solenoid.IntakeDeploySolenoid;
 import com.team2502.offseason2019.subsystem.ElevatorSubsystem;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
@@ -29,6 +31,8 @@ public class Robot extends TimedRobot {
   public static IntakeDeploySolenoid INTAKE_DEPLOY;
   public static ElevatorSubsystem ELEVATOR;
 
+  public static UsbCamera CAMERA;
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -40,6 +44,8 @@ public class Robot extends TimedRobot {
     ACTIVE_INTAKE = new ActiveIntakeSubsystem();
     INTAKE_DEPLOY = new IntakeDeploySolenoid();
     ELEVATOR = new ElevatorSubsystem();
+
+    CAMERA = CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
