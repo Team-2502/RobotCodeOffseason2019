@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
     INTAKE_DEPLOY = new IntakeDeploySolenoid();
     ELEVATOR = new ElevatorSubsystem();
 
-    CAMERA = CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
