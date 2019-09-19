@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveCommand extends Command {
 
     public DriveCommand() {
-        this(DrivetrainSubsystem.TeleopMode.VELOCITY);
+        this(DrivetrainSubsystem.TeleopMode.VOLTAGE);
     }
 
     public DriveCommand(DrivetrainSubsystem.TeleopMode teleopMode) {
