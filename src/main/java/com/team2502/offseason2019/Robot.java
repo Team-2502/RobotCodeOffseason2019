@@ -30,8 +30,7 @@ public class Robot extends TimedRobot {
   public static ActiveIntakeSubsystem ACTIVE_INTAKE;
   public static IntakeDeploySolenoid INTAKE_DEPLOY;
   public static ElevatorSubsystem ELEVATOR;
-
-  public static UsbCamera CAMERA;
+  public static OI OI;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -44,6 +43,7 @@ public class Robot extends TimedRobot {
     ACTIVE_INTAKE = new ActiveIntakeSubsystem();
     INTAKE_DEPLOY = new IntakeDeploySolenoid();
     ELEVATOR = new ElevatorSubsystem();
+    OI = new OI();
 
     CameraServer.getInstance().startAutomaticCapture();
   }
@@ -58,9 +58,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
     Scheduler.getInstance().run();
-
   }
 
 
@@ -76,11 +74,15 @@ public class Robot extends TimedRobot {
 
   }
 
+  @Override
+  public void teleopInit() { }
+
   /**
    * This function is called periodically during operator control.
    */
   @Override
   public void teleopPeriodic() {
+      Scheduler.getInstance().run();
   }
 
   /**
@@ -92,5 +94,10 @@ public class Robot extends TimedRobot {
 
   public void disabledInit() {
     INTAKE_DEPLOY.setEnabled(false);
+  }
+
+  @Override
+  public void disabledPeriodic(){
+
   }
 }

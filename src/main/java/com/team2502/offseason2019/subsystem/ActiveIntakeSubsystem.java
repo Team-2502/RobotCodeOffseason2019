@@ -11,12 +11,15 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.team2502.offseason2019.RobotMap;
+import com.team2502.offseason2019.command.intake.CargoBrakeModeCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ActiveIntakeSubsystem extends Subsystem
 {
     private final WPI_TalonSRX cargoIntake;
     private final WPI_TalonSRX hatchIntake;
+
+    public boolean cargoInCarriage;
 
     public enum TakeIn
     {
@@ -30,6 +33,9 @@ public class ActiveIntakeSubsystem extends Subsystem
         hatchIntake = new WPI_TalonSRX(RobotMap.Motor.INTAKE_HATCH);
 
         cargoIntake.setNeutralMode(NeutralMode.Brake);
+        hatchIntake.setNeutralMode(NeutralMode.Brake);
+
+        cargoInCarriage = false;
     }
 
     /**
@@ -56,7 +62,9 @@ public class ActiveIntakeSubsystem extends Subsystem
      */
     public void runCargo(double speed)
     {
-        cargoIntake.set(ControlMode.Velocity, speed);
+        cargoInCarriage = speed > 0;
+
+        cargoIntake.set(ControlMode.PercentOutput, speed);
     }
 
     /**
@@ -65,7 +73,8 @@ public class ActiveIntakeSubsystem extends Subsystem
      */
     public void runHatch(double speed)
     {
-        hatchIntake.set(ControlMode.Velocity, speed);
+        cargoInCarriage = false;
+        hatchIntake.set(ControlMode.PercentOutput, speed);
     }
 
     /**
@@ -78,5 +87,5 @@ public class ActiveIntakeSubsystem extends Subsystem
     }
 
     @Override
-    protected void initDefaultCommand(){}
+    protected void initDefaultCommand(){setDefaultCommand(new CargoBrakeModeCommand());}
 }

@@ -7,9 +7,8 @@ public class Constants {
     {
         public static class Intake
         {
-            //TODO Modify intake speeds
-            public static final double CARGO_INTAKE_SPEED = 0.1;
-            public static final double HATCH_INTAKE_SPEED = 0.1;
+            public static final double CARGO_INTAKE_SPEED = 0.75;
+            public static final double HATCH_INTAKE_SPEED = 0.8;
 
             private Intake(){}
         }
