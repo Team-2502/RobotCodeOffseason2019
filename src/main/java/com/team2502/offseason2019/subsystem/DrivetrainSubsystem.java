@@ -4,9 +4,10 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.team2502.offseason2019.OI;
 import com.team2502.offseason2019.RobotMap;
+import com.team2502.offseason2019.command.DriveCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/* TODO This subsystem encompasses the 6 wheel tank drive train powered by 4 CIMs
+/* This subsystem encompasses the 6 wheel tank drive train powered by 4 CIMs
         should be very similar to our drivetrains in previous years
  */
 public class DrivetrainSubsystem extends Subsystem {
@@ -31,13 +32,7 @@ public class DrivetrainSubsystem extends Subsystem {
         backRight.follow(frontRight);
         backLeft.follow(frontLeft);
 
-//        Uncomment these two lines of code to invert the right wheels
-//        frontRight.setInverted(true);
-//        backRight.setInverted(true);
-//
-//        Uncomment these two lines of code to invert the left wheels
-//        frontLeft.setInverted(true);
-//        backLeft.setInverted(true);
+        frontLeft.setInverted(true);
     }
 
     public void runTeleop() {
@@ -64,8 +59,8 @@ public class DrivetrainSubsystem extends Subsystem {
      * Velocity for the right side of the drive train
      */
     public void runVelocity(double left, double right) {
-        frontLeft.set(ControlMode.Velocity, left);
-        frontRight.set(ControlMode.Velocity, right);
+        frontLeft.set(ControlMode.PercentOutput, left);
+        frontRight.set(ControlMode.PercentOutput, right);
     }
 
     /**
@@ -97,5 +92,5 @@ public class DrivetrainSubsystem extends Subsystem {
     }
 
     @Override
-    protected void initDefaultCommand() { }
+    protected void initDefaultCommand() {setDefaultCommand(new DriveCommand()); }
 }
