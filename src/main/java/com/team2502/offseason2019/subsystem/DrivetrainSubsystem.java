@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DrivetrainSubsystem extends Subsystem {
 
+    // Sets which side of the drivetrain is inverted
+    private static final boolean INVERT_RIGHT_WHEELS = false;
+
     private final WPI_TalonSRX frontRight;
     private final WPI_TalonSRX frontLeft;
 
@@ -20,7 +23,11 @@ public class DrivetrainSubsystem extends Subsystem {
         VOLTAGE
     }
 
-    private TeleopMode teleopMode = TeleopMode.VELOCITY;
+    /**
+     * Default Teleop mode
+     * @see DrivetrainSubsystem#setTeleopMode(TeleopMode)
+     */
+    private TeleopMode teleopMode = TeleopMode.VOLTAGE;
 
     public DrivetrainSubsystem() {
         frontRight = new WPI_TalonSRX(RobotMap.Motor.DRIVE_FRONT_RIGHT);
@@ -32,7 +39,11 @@ public class DrivetrainSubsystem extends Subsystem {
         backRight.follow(frontRight);
         backLeft.follow(frontLeft);
 
-        frontLeft.setInverted(true);
+        if(INVERT_RIGHT_WHEELS) {
+            frontRight.setInverted(true);
+        }else {
+            frontLeft.setInverted(true);
+        }
     }
 
     public void runTeleop() {
@@ -59,8 +70,8 @@ public class DrivetrainSubsystem extends Subsystem {
      * Velocity for the right side of the drive train
      */
     public void runVelocity(double left, double right) {
-        frontLeft.set(ControlMode.PercentOutput, left);
-        frontRight.set(ControlMode.PercentOutput, right);
+        frontLeft.set(ControlMode.Velocity, left);
+        frontRight.set(ControlMode.Velocity, right);
     }
 
     /**
