@@ -26,8 +26,8 @@ public class OI {
 
     public static final Button INTAKE_DEPLOY = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.INTAKE_DEPLOY);
 
-    static final Button ELEV_UP = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.RAISE_ELEVATOR);
-    static final Button ELEV_DOWN = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.LOWER_ELEVATOR);
+    public static final Button ELEV_UP = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.RAISE_ELEVATOR);
+    public static final Button ELEV_DOWN = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.LOWER_ELEVATOR);
 
     static
     {
@@ -39,8 +39,8 @@ public class OI {
       
         INTAKE_DEPLOY.whenPressed(new DeployIntakeCommand());
       
-        ELEV_UP.whileHeld(new ElevatorCommand(0.75));
-        ELEV_DOWN.whileHeld(new ElevatorCommand(-0.3));
+        ELEV_UP.whileHeld(new ElevatorCommand(Constants.Physical.Elevator.ELEVATOR_UP_SPEED));
+        ELEV_DOWN.whileHeld(new ElevatorCommand(Constants.Physical.Elevator.ELEVATOR_DOWN_SPEED));
     }
 
     /**

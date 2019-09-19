@@ -13,6 +13,14 @@ public class Constants {
             private Intake(){}
         }
 
+        public static class Elevator
+        {
+            public static final double ELEVATOR_UP_SPEED = 0.7;
+            public static final double ELEVATOR_DOWN_SPEED = -0.3;
+
+            private Elevator(){}
+        }
+
         private Physical(){}
     }
 
