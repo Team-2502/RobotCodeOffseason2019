@@ -1,6 +1,10 @@
 package com.team2502.offseason2019;
 
 
+import com.team2502.offseason2019.command.elevator.ElevatorToBottomCommand;
+import com.team2502.offseason2019.command.elevator.ElevatorToLvlOneCommand;
+import com.team2502.offseason2019.command.elevator.ElevatorToLvlThreeCommand;
+import com.team2502.offseason2019.command.elevator.ElevatorToLvlTwoCommand;
 import com.team2502.offseason2019.command.intake.ActiveIntakeCommand;
 import com.team2502.offseason2019.command.intake.DeployIntakeCommand;
 import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
@@ -25,8 +29,11 @@ public class OI {
 
     public static final Button INTAKE_DEPLOY = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.INTAKE_DEPLOY);
 
-    public static final Button ELEV_UP = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.RAISE_ELEVATOR);
-    public static final Button ELEV_DOWN = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.LOWER_ELEVATOR);
+    public static final Button ELEVATOR_TO_BOTTOM = new JoystickButton(JOYSTICK_SIDE_PANEL, RobotMap.Button.ELEVATOR_TO_BOTTOM);
+    public static final Button ELEVATOR_TO_ONE = new JoystickButton(JOYSTICK_SIDE_PANEL, RobotMap.Button.ELEVATOR_TO_ONE);
+    public static final Button ELEVATOR_TO_TWO = new JoystickButton(JOYSTICK_SIDE_PANEL, RobotMap.Button.ELEVATOR_TO_TWO);
+    public static final Button ELEVATOR_TO_THREE = new JoystickButton(JOYSTICK_SIDE_PANEL, RobotMap.Button.ELEVATOR_TO_THREE);
+
 
     static
     {
@@ -37,6 +44,11 @@ public class OI {
         HATCH_INTAKE_OUT.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.HATCH,Constants.Physical.Intake.HATCH_INTAKE_SPEED));
       
         INTAKE_DEPLOY.whenPressed(new DeployIntakeCommand());
+
+        ELEVATOR_TO_BOTTOM.whenPressed(new ElevatorToBottomCommand());
+        ELEVATOR_TO_ONE.whenPressed(new ElevatorToLvlOneCommand());
+        ELEVATOR_TO_TWO.whenPressed(new ElevatorToLvlTwoCommand());
+        ELEVATOR_TO_THREE.whenPressed(new ElevatorToLvlThreeCommand());
     }
 
     /**

@@ -25,8 +25,11 @@ public class RobotMap {
 
         public static final int INTAKE_DEPLOY = 1;
 
-        public static final int RAISE_ELEVATOR = 11;
-        public static final int LOWER_ELEVATOR = 12;
+        //TODO change button IDs
+        public static final int ELEVATOR_TO_BOTTOM = 1;
+        public static final int ELEVATOR_TO_ONE = 2;
+        public static final int ELEVATOR_TO_TWO = 3;
+        public static final int ELEVATOR_TO_THREE = 4;
 
         private Button() { }
     }
@@ -35,6 +38,7 @@ public class RobotMap {
     {
         public static final int INTAKE_CARGO = 10;
         public static final int INTAKE_HATCH = 9;
+
         public static final int ELEVATOR_BOTTOM = 2;
         public static final int ELEVATOR_TOP = 1;
 
