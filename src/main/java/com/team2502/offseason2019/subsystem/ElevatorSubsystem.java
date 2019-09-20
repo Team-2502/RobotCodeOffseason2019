@@ -3,7 +3,6 @@ package com.team2502.offseason2019.subsystem;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.team2502.offseason2019.RobotMap;
-import com.team2502.offseason2019.command.ElevatorCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /* This subsystem encompasses the cascading elevator, powered by a CIMple Gearbox with 2 NEOs
