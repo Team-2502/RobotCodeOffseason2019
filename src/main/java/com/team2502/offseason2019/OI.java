@@ -38,9 +38,6 @@ public class OI {
         HATCH_INTAKE_OUT.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.HATCH,Constants.Physical.Intake.HATCH_INTAKE_SPEED));
       
         INTAKE_DEPLOY.whenPressed(new DeployIntakeCommand());
-      
-        ELEV_UP.whileHeld(new ElevatorCommand(Constants.Physical.Elevator.ELEVATOR_UP_SPEED));
-        ELEV_DOWN.whileHeld(new ElevatorCommand(Constants.Physical.Elevator.ELEVATOR_DOWN_SPEED));
     }
 
     /**
