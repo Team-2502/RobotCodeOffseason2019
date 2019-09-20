@@ -19,11 +19,13 @@ public class Constants {
             public static final double ELEVATOR_UP_SPEED = 0.9;
             public static final double ELEVATOR_DOWN_SPEED = -0.3;
 
-            public static final double LOWER_POS_ROTATIONS = 2;
-            public static final double MIDDLE_POS_ROTATIONS = 10;
-            public static final double UPPER_POS_ROTATIONS = 20;
+            public static final double LVL_ONE_ROTATIONS = 2;
+            public static final double LVL_TWO_ROTATIONS = 10;
+            public static final double LVL_THREE_ROTATIONS = 20;
 
             public static final double POS_ERR_THRESHOLD = 0.5;
+
+            public static final double ENCODER_RESET_THRESHOLD = -0.5;
 
             private Elevator(){}
         }

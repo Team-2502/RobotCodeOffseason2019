@@ -14,6 +14,8 @@ public class ElevatorSubsystem extends Subsystem {
     public final CANSparkMax elevatorTop;
     public final CANSparkMax elevatorBottom;
 
+    private ELEVATOR_POS currentPos;
+
     public ElevatorSubsystem() {
         elevatorTop = new CANSparkMax(RobotMap.Motor.ELEVATOR_TOP, CANSparkMaxLowLevel.MotorType.kBrushless);
         elevatorBottom = new CANSparkMax(RobotMap.Motor.ELEVATOR_BOTTOM, CANSparkMaxLowLevel.MotorType.kBrushless);
@@ -27,6 +29,17 @@ public class ElevatorSubsystem extends Subsystem {
         elevatorBottom.setInverted(true);
 
         elevatorBottom.getEncoder().setPosition(0);
+
+        currentPos = ELEVATOR_POS.BOTTOM;
+    }
+
+    public enum ELEVATOR_POS
+    {
+        BOTTOM,
+        LVL_ONE,
+        LVL_TWO,
+        LVL_THREE,
+        OTHER
     }
 
     @Override
@@ -54,5 +67,15 @@ public class ElevatorSubsystem extends Subsystem {
 
     public double getEncoderPos(){
         return elevatorBottom.getEncoder().getPosition();
+    }
+
+    public ELEVATOR_POS getCurrentPos()
+    {
+        return currentPos;
+    }
+
+    public void setCurrentPos(ELEVATOR_POS pos)
+    {
+        this.currentPos = currentPos;
     }
 }
