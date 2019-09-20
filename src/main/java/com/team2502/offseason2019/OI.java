@@ -33,7 +33,7 @@ public class OI {
     {
         // INTAKE
         CARGO_INTAKE_IN.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.CARGO,Constants.Physical.Intake.CARGO_INTAKE_SPEED));
-        CARGO_INTAKE_OUT.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.CARGO,-Constants.Physical.Intake.CARGO_INTAKE_SPEED));
+        CARGO_INTAKE_OUT.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.CARGO,Constants.Physical.Intake.CARGO_OUTTAKE_SPEED));
         HATCH_INTAKE_IN.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.HATCH,-Constants.Physical.Intake.HATCH_INTAKE_SPEED));
         HATCH_INTAKE_OUT.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.HATCH,Constants.Physical.Intake.HATCH_INTAKE_SPEED));
       

@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ElevatorCommand extends Command
 {
-    private double _speed;
+    private double speed;
 
     /**
      * @param speed Percent voltage to run motors at
@@ -16,14 +16,12 @@ public class ElevatorCommand extends Command
     public ElevatorCommand(double speed)
     {
         requires(Robot.ELEVATOR);
-        _speed = speed;
     }
-
 
     @Override
     protected void execute()
     {
-        Robot.ELEVATOR.moveElevator(_speed);
+        Robot.ELEVATOR.moveElevator(speed);
     }
 
     @Override

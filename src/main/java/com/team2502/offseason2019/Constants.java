@@ -8,15 +8,22 @@ public class Constants {
         public static class Intake
         {
             public static final double CARGO_INTAKE_SPEED = 0.75;
-            public static final double HATCH_INTAKE_SPEED = 0.8;
+            public static final double CARGO_OUTTAKE_SPEED = -1.0;
+            public static final double HATCH_INTAKE_SPEED = 1.0;
 
             private Intake(){}
         }
 
         public static class Elevator
         {
-            public static final double ELEVATOR_UP_SPEED = 0.7;
+            public static final double ELEVATOR_UP_SPEED = 0.9;
             public static final double ELEVATOR_DOWN_SPEED = -0.3;
+
+            public static final double LOWER_POS_ROTATIONS = 2;
+            public static final double MIDDLE_POS_ROTATIONS = 10;
+            public static final double UPPER_POS_ROTATIONS = 20;
+
+            public static final double POS_ERR_THRESHOLD = 0.5;
 
             private Elevator(){}
         }
