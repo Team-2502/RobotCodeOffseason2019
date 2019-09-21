@@ -2,6 +2,7 @@ package com.team2502.offseason2019.subsystem;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
+import com.team2502.offseason2019.Constants;
 import com.team2502.offseason2019.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,7 +15,7 @@ public class ElevatorSubsystem extends Subsystem {
     public final CANSparkMax elevatorTop;
     public final CANSparkMax elevatorBottom;
 
-    private ELEVATOR_POS currentPos;
+    private ElevatorLevel currentPos;
 
     public ElevatorSubsystem() {
         elevatorTop = new CANSparkMax(RobotMap.Motor.ELEVATOR_TOP, CANSparkMaxLowLevel.MotorType.kBrushless);
@@ -30,16 +31,23 @@ public class ElevatorSubsystem extends Subsystem {
 
         elevatorBottom.getEncoder().setPosition(0);
 
-        currentPos = ELEVATOR_POS.BOTTOM;
+        currentPos = ElevatorLevel.BOTTOM;
     }
 
-    public enum ELEVATOR_POS
+    public enum ElevatorLevel
     {
         BOTTOM,
         LVL_ONE,
         LVL_TWO,
         LVL_THREE,
         OTHER
+    }
+
+    public enum TargetRelations
+    {
+        LESS,
+        WITHIN,
+        GREATER
     }
 
     @Override
@@ -69,13 +77,51 @@ public class ElevatorSubsystem extends Subsystem {
         return elevatorBottom.getEncoder().getPosition();
     }
 
-    public ELEVATOR_POS getCurrentPos()
+    public ElevatorLevel getCurrentPos()
     {
         return currentPos;
     }
 
-    public void setCurrentPos(ELEVATOR_POS pos)
+    public void setCurrentPos(ElevatorLevel pos)
     {
         this.currentPos = currentPos;
+    }
+
+
+    /**
+     * Method to get the relation of the elevator's current position to it's target
+     * @param targetLevel The target level of the elevator
+     * @return Whether the current position is GREATER than, WITHIN, or LESS than the target range
+     */
+    public TargetRelations getRelationToTarget(ElevatorLevel targetLevel)
+    {
+        double targetRotations = 0;
+
+        switch(targetLevel)
+        {
+            case LVL_ONE:
+                targetRotations = Constants.Physical.Elevator.LVL_ONE_ROTATIONS;
+                break;
+            case LVL_TWO:
+                targetRotations = Constants.Physical.Elevator.LVL_TWO_ROTATIONS;
+                break;
+            case LVL_THREE:
+                targetRotations = Constants.Physical.Elevator.LVL_THREE_ROTATIONS;
+                break;
+        }
+
+        if(getEncoderPos() > targetRotations - Constants.Physical.Elevator.POS_ERR_THRESHOLD &&
+            getEncoderPos() < targetRotations + Constants.Physical.Elevator.POS_ERR_THRESHOLD)
+        {
+            return TargetRelations.WITHIN;
+        }
+        else if(getEncoderPos() <= targetRotations - Constants.Physical.Elevator.POS_ERR_THRESHOLD)
+        {
+            return TargetRelations.LESS;
+        }
+        else
+        {
+            return TargetRelations.GREATER;
+        }
     }
 }

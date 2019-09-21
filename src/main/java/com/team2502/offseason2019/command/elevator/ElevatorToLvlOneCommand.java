@@ -9,12 +9,25 @@ public class ElevatorToLvlOneCommand extends Command
 {
 
     private double speed;
-    boolean withinThreshold = false;
+
+    // The elevator's position in relation to it's target position
+    private ElevatorSubsystem.TargetRelations relationToTarget;
 
     public ElevatorToLvlOneCommand()
     {
-        this.speed = (Robot.ELEVATOR.getCurrentPos().equals(ElevatorSubsystem.ELEVATOR_POS.BOTTOM))?
-                Constants.Physical.Elevator.ELEVATOR_UP_SPEED : Constants.Physical.Elevator.ELEVATOR_DOWN_SPEED;
+        // If at correct stage already, set speed to 0, otherwise set to either UP or DOWN speed based on it's current position
+        switch(Robot.ELEVATOR.getRelationToTarget(ElevatorSubsystem.ElevatorLevel.LVL_ONE))
+        {
+            case WITHIN:
+                speed = 0;
+                break;
+            case LESS:
+                speed = Constants.Physical.Elevator.ELEVATOR_UP_SPEED;
+                break;
+            case GREATER:
+                speed = Constants.Physical.Elevator.ELEVATOR_DOWN_SPEED;
+                break;
+        }
 
         requires(Robot.ELEVATOR);
     }
@@ -22,24 +35,30 @@ public class ElevatorToLvlOneCommand extends Command
     @Override
     protected void execute()
     {
-        if(Robot.ELEVATOR.getEncoderPos() > Constants.Physical.Elevator.LVL_ONE_ROTATIONS - Constants.Physical.Elevator.POS_ERR_THRESHOLD &&
-                Robot.ELEVATOR.getEncoderPos() < Constants.Physical.Elevator.LVL_ONE_ROTATIONS + Constants.Physical.Elevator.POS_ERR_THRESHOLD)
-        {
-            withinThreshold = true;
-        }
+        // Sets relationToTarget to the current relation to the target range
+        relationToTarget = Robot.ELEVATOR.getRelationToTarget(ElevatorSubsystem.ElevatorLevel.LVL_ONE);
+
         Robot.ELEVATOR.moveElevator(speed);
     }
 
+    /**
+     * @return True if elevator position is within the target range
+     */
     @Override
     protected boolean isFinished()
     {
-        return (Robot.ELEVATOR.getCurrentPos().equals(ElevatorSubsystem.ELEVATOR_POS.LVL_ONE) || withinThreshold);
+        return (relationToTarget.equals(ElevatorSubsystem.TargetRelations.WITHIN));
     }
 
+    /**
+     *  Only sets current elevator position to "LVL_ONE" if it has actually reached the lower level before command ends
+     *  Stops elevator
+     */
     @Override
     protected void end()
     {
-        Robot.ELEVATOR.setCurrentPos(ElevatorSubsystem.ELEVATOR_POS.LVL_ONE);
+        Robot.ELEVATOR.setCurrentPos(relationToTarget.equals(ElevatorSubsystem.TargetRelations.WITHIN)?
+                ElevatorSubsystem.ElevatorLevel.LVL_ONE : ElevatorSubsystem.ElevatorLevel.OTHER);
         Robot.ELEVATOR.stopElevator();
     }
 }
