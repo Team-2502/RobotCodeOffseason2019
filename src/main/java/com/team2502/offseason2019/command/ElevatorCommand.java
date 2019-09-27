@@ -16,6 +16,7 @@ public class ElevatorCommand extends Command
     public ElevatorCommand(double speed)
     {
         requires(Robot.ELEVATOR);
+        this.speed = speed;
     }
 
     @Override

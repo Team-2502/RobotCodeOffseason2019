@@ -24,7 +24,7 @@ public class ElevatorSubsystem extends Subsystem {
 
         elevatorTop.follow(elevatorBottom);
 
-        elevatorBottom.setOpenLoopRampRate(0.75);
+        elevatorBottom.setOpenLoopRampRate(0.4);
         elevatorBottom.setInverted(true);
 
         elevatorBottom.getEncoder().setPosition(0);

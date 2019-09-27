@@ -35,8 +35,8 @@ public class RobotMap {
     {
         public static final int INTAKE_CARGO = 10;
         public static final int INTAKE_HATCH = 9;
-        public static final int ELEVATOR_BOTTOM = 2;
-        public static final int ELEVATOR_TOP = 1;
+        public static final int ELEVATOR_BOTTOM = 12;
+        public static final int ELEVATOR_TOP = 11;
 
         public static final int DRIVE_FRONT_RIGHT = 1;
         public static final int DRIVE_FRONT_LEFT = 6;
