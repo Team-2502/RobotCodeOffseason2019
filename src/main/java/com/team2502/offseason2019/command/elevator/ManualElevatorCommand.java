@@ -13,6 +13,7 @@ public class ManualElevatorCommand extends Command
      */
     public ManualElevatorCommand(double speed)
     {
+        this.speed = speed;
         requires(Robot.ELEVATOR);
     }
 
