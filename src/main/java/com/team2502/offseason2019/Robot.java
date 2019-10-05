@@ -12,7 +12,7 @@ import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
 import com.team2502.offseason2019.subsystem.DrivetrainSubsystem;
 import com.team2502.offseason2019.subsystem.solenoid.IntakeDeploySolenoid;
 import com.team2502.offseason2019.subsystem.ElevatorSubsystem;
-import edu.wpi.cscore.UsbCamera;
+import com.team2502.offseason2019.subsystem.vision.VisionSubsystem;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
   public static IntakeDeploySolenoid INTAKE_DEPLOY;
   public static ElevatorSubsystem ELEVATOR;
   public static OI OI;
+  public static VisionSubsystem VISION;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
     INTAKE_DEPLOY = new IntakeDeploySolenoid();
     ELEVATOR = new ElevatorSubsystem();
     OI = new OI();
+    VISION = new VisionSubsystem();
 
     CameraServer.getInstance().startAutomaticCapture();
   }
@@ -75,7 +77,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopInit() { }
+  public void teleopInit() {
+    VISION.VisionThread.startPeriodic(Constants.Vision.VisionThreadTime);
+  }
 
   /**
    * This function is called periodically during operator control.

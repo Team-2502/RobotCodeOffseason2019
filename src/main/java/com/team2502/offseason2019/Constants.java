@@ -31,4 +31,14 @@ public class Constants {
         private Physical(){}
     }
 
+    public static class Vision
+    {
+        public static final double ScaleHorizontalToTarget = 1.0 /27.0;
+        public static final double TurningGain = 1.0;
+        public static final double StopTurningDeg = 1.0;
+        public static final double VisionThreadTime = 0.01;
+
+        private Vision(){}
+    }
+
 }

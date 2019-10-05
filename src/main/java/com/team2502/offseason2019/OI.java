@@ -1,6 +1,7 @@
 package com.team2502.offseason2019;
 
 
+import com.team2502.offseason2019.command.DriveWithTurningAssistCommand;
 import com.team2502.offseason2019.command.intake.ActiveIntakeCommand;
 import com.team2502.offseason2019.command.intake.DeployIntakeCommand;
 import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
@@ -19,6 +20,8 @@ public class OI {
     public static final Joystick JOYSTICK_FUNCTION = new Joystick(RobotMap.Joystick.JOYSTICK_FUNCTION);
     public static final Joystick JOYSTICK_SIDE_PANEL = new Joystick(RobotMap.Joystick.JOYSTICK_SIDE_PANEL);
 
+    public static final Button VISION_ALIGNING_ENABLED = new JoystickButton(JOYSTICK_DRIVE_RIGHT, RobotMap.Button.ENABLE_VISION);
+
     public static final Button CARGO_INTAKE_IN = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.CARGO_INTAKE_IN);
     public static final Button CARGO_INTAKE_OUT = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.CARGO_INTAKE_OUT);
     public static final Button HATCH_INTAKE_IN = new JoystickButton(JOYSTICK_FUNCTION, RobotMap.Button.HATCH_INTAKE_IN);
@@ -31,6 +34,8 @@ public class OI {
 
     static
     {
+        VISION_ALIGNING_ENABLED.whileHeld(new DriveWithTurningAssistCommand());
+
         // INTAKE
         CARGO_INTAKE_IN.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.CARGO,Constants.Physical.Intake.CARGO_INTAKE_SPEED));
         CARGO_INTAKE_OUT.whileHeld(new ActiveIntakeCommand(ActiveIntakeSubsystem.TakeIn.CARGO,Constants.Physical.Intake.CARGO_OUTTAKE_SPEED));

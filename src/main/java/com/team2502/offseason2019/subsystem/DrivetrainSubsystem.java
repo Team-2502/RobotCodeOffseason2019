@@ -6,6 +6,7 @@ import com.team2502.offseason2019.OI;
 import com.team2502.offseason2019.RobotMap;
 import com.team2502.offseason2019.command.DriveCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /* This subsystem encompasses the 6 wheel tank drive train powered by 4 CIMs
         should be very similar to our drivetrains in previous years
@@ -17,6 +18,8 @@ public class DrivetrainSubsystem extends Subsystem {
 
     private final WPI_TalonSRX frontRight;
     private final WPI_TalonSRX frontLeft;
+
+    private final DifferentialDrive diffDrive;
 
     public enum TeleopMode {
         VELOCITY,
@@ -32,6 +35,8 @@ public class DrivetrainSubsystem extends Subsystem {
     public DrivetrainSubsystem() {
         frontRight = new WPI_TalonSRX(RobotMap.Motor.DRIVE_FRONT_RIGHT);
         frontLeft = new WPI_TalonSRX(RobotMap.Motor.DRIVE_FRONT_LEFT);
+
+        diffDrive = new DifferentialDrive(frontLeft, frontRight);
 
         WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.Motor.DRIVE_BACK_RIGHT);
         WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.Motor.DRIVE_BACK_LEFT);
@@ -84,6 +89,10 @@ public class DrivetrainSubsystem extends Subsystem {
     public void runVoltage(double left, double right) {
         frontLeft.set(ControlMode.PercentOutput, left);
         frontRight.set(ControlMode.PercentOutput, right);
+    }
+
+    public void runArcade(double throttle, double turn){
+        diffDrive.arcadeDrive(throttle, turn);
     }
 
     /**

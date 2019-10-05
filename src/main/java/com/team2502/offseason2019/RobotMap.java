@@ -17,6 +17,8 @@ public class RobotMap {
 
     public static final class Button
     {
+        public static final int ENABLE_VISION = 1;
+
         public static final int CARGO_INTAKE_IN = 6;
         public static final int CARGO_INTAKE_OUT = 4;
 
