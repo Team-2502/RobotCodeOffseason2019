@@ -16,8 +16,8 @@ public class Constants {
 
         public static class Elevator
         {
-            public static final double ELEVATOR_UP_SPEED = 0.3;
-            public static final double ELEVATOR_DOWN_SPEED = -0.85;
+            public static final double ELEVATOR_UP_SPEED = -0.3;
+            public static final double ELEVATOR_DOWN_SPEED = 0.85;
 
             public static final double LOWER_POS_ROTATIONS = 2;
             public static final double MIDDLE_POS_ROTATIONS = 10;

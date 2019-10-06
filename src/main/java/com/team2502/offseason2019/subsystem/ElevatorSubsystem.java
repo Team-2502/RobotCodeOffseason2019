@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
     An example of a similar subsystem can be located in RobotCode2018
     Moving the elevator to level 2/3 with a single button press would be nice but is not currently a priority
  */
-public class ElevatorSubsystem extends Subsystem {
+public class
+ElevatorSubsystem extends Subsystem {
 
     public final CANSparkMax elevatorTop;
     public final CANSparkMax elevatorBottom;
