@@ -61,6 +61,10 @@ dependencies {
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
 
     testCompile 'junit:junit:4.12'
+
+    compile 'com.github.ezauton:Core:1.0-SNAPSHOT'
+    compile 'com.github.ezauton:Recorder:1.0-SNAPSHOT'
+    compile 'com.github.ezauton:WPILib:1.0-SNAPSHOT'
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
