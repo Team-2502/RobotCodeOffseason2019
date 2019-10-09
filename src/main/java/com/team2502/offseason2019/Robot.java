@@ -46,6 +46,8 @@ public class Robot extends TimedRobot {
     OI = new OI();
 
     CameraServer.getInstance().startAutomaticCapture();
+
+    AutoPicker.putToSmartDashboard();
   }
 
   /**
@@ -64,6 +66,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+
+    Scheduler.getInstance().add(AutoPicker.getAutoInstance());
   }
 
   /**

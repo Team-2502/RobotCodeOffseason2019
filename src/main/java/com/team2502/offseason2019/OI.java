@@ -1,10 +1,10 @@
 package com.team2502.offseason2019;
 
 
-import com.team2502.offseason2019.command.intake.ActiveIntakeCommand;
-import com.team2502.offseason2019.command.intake.DeployIntakeCommand;
+import com.team2502.offseason2019.command.teleop.intake.ActiveIntakeCommand;
+import com.team2502.offseason2019.command.teleop.intake.DeployIntakeCommand;
 import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
-import com.team2502.offseason2019.command.ElevatorCommand;
+import com.team2502.offseason2019.command.teleop.ElevatorCommand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

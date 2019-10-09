@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.team2502.offseason2019.OI;
 import com.team2502.offseason2019.RobotMap;
-import com.team2502.offseason2019.command.DriveCommand;
+import com.team2502.offseason2019.command.teleop.DriveCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /* This subsystem encompasses the 6 wheel tank drive train powered by 4 CIMs

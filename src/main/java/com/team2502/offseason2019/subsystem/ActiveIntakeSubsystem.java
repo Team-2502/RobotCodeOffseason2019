@@ -11,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.team2502.offseason2019.RobotMap;
-import com.team2502.offseason2019.command.intake.CargoBrakeModeCommand;
+import com.team2502.offseason2019.command.teleop.intake.CargoBrakeModeCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ActiveIntakeSubsystem extends Subsystem

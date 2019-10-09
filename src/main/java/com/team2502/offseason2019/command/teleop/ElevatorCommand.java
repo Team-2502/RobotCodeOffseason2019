@@ -1,4 +1,4 @@
-package com.team2502.offseason2019.command;
+package com.team2502.offseason2019.command.teleop;
 
 import com.team2502.offseason2019.Robot;
 import edu.wpi.first.wpilibj.command.Command;
