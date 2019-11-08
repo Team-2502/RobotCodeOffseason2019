@@ -1,10 +1,22 @@
 package com.team2502.offseason2019;
 
+import com.github.ezauton.core.pathplanning.purepursuit.LookaheadBounds;
+import com.team2502.offseason2019.subsystem.interfaces.DriveTrain;
+
 public class Constants {
 
 
     public static class Physical
     {
+
+        public static class Drivetrain
+        {
+            public static final double LATERAL_WHEEL_DISTANCE = 0; //TODO Find value
+
+            private Drivetrain(){}
+        }
+
+
         public static class Intake
         {
             public static final double CARGO_INTAKE_SPEED = 0.75;
@@ -28,7 +40,16 @@ public class Constants {
             private Elevator(){}
         }
 
-        private Physical(){}
+        private Physical()
+        {}
+    }
+
+    public static class Autonomous
+    {
+        public static LookaheadBounds getLookaheadBounds(DriveTrain dt) {
+            return new LookaheadBounds(1, 8, 3, 10, dt.getVelocityEstimator());
+        }
+        private Autonomous() { }
     }
 
 }

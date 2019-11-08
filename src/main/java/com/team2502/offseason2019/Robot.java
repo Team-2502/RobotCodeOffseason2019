@@ -8,6 +8,9 @@
 package com.team2502.offseason2019;
 
 
+import com.github.ezauton.core.action.tangible.MainActionScheduler;
+import com.github.ezauton.core.simulation.ActionScheduler;
+import com.github.ezauton.core.utils.RealClock;
 import com.team2502.offseason2019.subsystem.ActiveIntakeSubsystem;
 import com.team2502.offseason2019.subsystem.DrivetrainSubsystem;
 import com.team2502.offseason2019.subsystem.solenoid.IntakeDeploySolenoid;
@@ -25,6 +28,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * project.
  */
 public class Robot extends TimedRobot {
+
+  public static ActionScheduler ACTION_SCHEDULER = new MainActionScheduler(RealClock.CLOCK);
 
   public static DrivetrainSubsystem DRIVETRAIN;
   public static ActiveIntakeSubsystem ACTIVE_INTAKE;
